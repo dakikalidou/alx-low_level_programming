@@ -1,47 +1,39 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
 
 /**
- * is_numerical - check if it is a digit
- * @n: Number
- * Return: If is a number, return 1 else return 0
+ * main - print password.
+ *
+ * Return: 0.
  */
-int is_numerical(unsigned int n)
+
+int main(void)
 {
-return (n >= '0' &&  n <= '9');
-}
+	int ascii = 2772, i = 0, j, random;
+	char password[100];
+	time_t t;
 
-/**
- * _atoi - convert a string to an integer
- *@s: String
- * Return: Return the num
- */
-int _atoi(char *s)
-{
-unsigned int number, i;
-int sign;
+	srand((int) time(&t));
+	while (ascii > 126)
+	{
+		random = rand() % 126;
+		password[i] = random;
+		ascii -= random;
+		i++;
+	}
+	if (ascii > 0)
+		password[i] = ascii;
+	else
+	{
+		i--;
+	}
+	
 
-sign = 1;
-number = 0;
-
-
-
-for (i = 0; s[i] != '\0'; i++)
-{
-if (is_numerical(s[i]))
-{
-number = (s[i] - 48) + number * 10;
-
-if (s[i + 1] == ' ')
-break;
-}
-else if (s[i] == '-')
-{
-sign *= -1;
-}
-
-}
-
-return (number *sign);
-
-
+	for (j = 0; j <= i; j++)
+	{
+		printf("%c", password[j]);
+	}
+	return (0);
 }
