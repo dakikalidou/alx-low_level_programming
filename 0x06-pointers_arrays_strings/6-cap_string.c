@@ -1,58 +1,40 @@
-#include "main.h
+#include "main.h"
+
 /**
- * separators - checks and ensure that all string is capitalized
- * @c: character to be checked
- * Return: if separator return 1. Otherwise return 0;
+ *cap_string - capitalizes all words of a string.
+ *@s: string to use.
+ *
+ *Return: string.
  */
-int separator(char c)
-{
-switch (c)
-{
-case ' ':
-case '\t':
-case '\n':
-case ',':
-case ';':
-case '.':
-case '!':
-case '?':
-case '"':
-case '(':
-case ')':
-case '{':
-case '}':
-return (1);
 
-default:
-return (0);
-}
-
-
-}
-/**
- * cap_string - capitalizes all words of a string
- * @s: string to uppercase
- * Return: returns the modified string
- */
 char *cap_string(char *s)
 {
-int count, upper;
+	int i = 1, j, check;
+char a[] = {',', ';', '.', '!', '?', '"', '(', ')', '{', '}', '\n', '\t', ' '};
 
-upper = -32;
+	if (s[0] > 96 && s[0] < 123)
+		s[0] -= 32;
 
-count = 0;
-
-while (s[count] != '\0')
-{
-if (s[count] >= 'a' && s[count] <= 'z')
-{
-
-
-if (s[count] == *s || separator(s[count - 1]))
-
-s[count] += upper;
-}
-count++;
-}
+	while (s[i] != '\0')
+	{
+		if (s[i] > 96 && s[i] < 123)
+		{
+			j = 0;
+			check = 0;
+			while (check == 0 && j < 13)
+			{
+				if (s[i - 1] == a[j])
+				{
+					check = 1;
+				}
+				j++;
+			}
+			if (check == 1)
+			{
+				s[i] -= 32;
+			}
+		}
+		i++;
+	}
 return (s);
 }

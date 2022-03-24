@@ -1,30 +1,34 @@
 #include "main.h"
+
 /**
- *_strncpy - copies a string
- *@dest: A pointer to a character that will be changed
- *@src: A pointer to a character that will be changed
- *@n: value
- *Return: dest
+ *_strncpy - copy src into dest.
+ *@dest: first string.
+ *@src: second string.
+ *@n: the number of bytes to use from src.
+ *Return: string.
  */
 
 char *_strncpy(char *dest, char *src, int n)
-
 {
-int i;
+	int i = 0, k = 0;
 
-i = 0;
-while (i < n && src[i] != '\0')
-{
-dest[i] = src[i];
-i++;
-}
+	while (n > k)
+	{
+		if (src[k] == '\0')
+		{
+			for (; k < n; k++)
+			{
+				dest[i] = '\0';
+				i++;
+			}
+		}
+		else
+		{
+			dest[i] = src[k];
+			k++;
+			i++;
+		}
+	}
 
-while (i < n)
-{
-dest[i] = '\0';
-i++;
-}
-
-return (dest);
-
+	return (dest);
 }
