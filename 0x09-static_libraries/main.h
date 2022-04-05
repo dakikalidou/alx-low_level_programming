@@ -1,5 +1,13 @@
 #ifndef MAIN_H
 #define MAIN_H
+
+/**
+ * File: main.h
+ * Auth: Daki
+ * Desc: Header file containing prototypes for all functions
+ *       used in the 0x09. C - Static libraries.
+ */
+
 int _putchar(char c);
 int _islower(int c);
 int _isalpha(int c);
